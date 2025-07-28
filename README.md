@@ -19,10 +19,4 @@ A simple and responsive **Task Manager** application built using **Redux Toolkit
 - [Material UI](https://mui.com/)
 - [Vite / CRA / Webpack] *(depends on your setup — update this)*
 
-## 📁 Folder Structure
 
-```bash
-src/
-│
-├── app/                # Redux store setup
-├── features/           # Redux slices (e.g., tas
