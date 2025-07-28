@@ -1,31 +1,27 @@
-// habit-slice.ts
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit"
 
 export interface Habit {
-  id: string;
-  name: string;
-  frequence: "daily" | "weekly";
-  completedDates: string[];
-  createdAt: string;
-}
+    id: string;
+    name: string;
+    frequence: "daily" | "weekly";
+    completedDates: string[];
+    createdAt: string;
 
-interface HabitState {
-  habits: Habit[];
+}
+interface HabitState{
+    habits: Habit[];
 }
 
 const initialState: HabitState = {
-  habits: [],
-};
-
+    habits: [],
+}
 const habitSlice = createSlice({
-  name: "habits",
-  initialState,
-  reducers: {
-    addHabit: () => {}, // Placeholder
-  },
-});
+    name:"habits",
+    initialState,
+    reducers: {
+        addHabit: ()=>{}
+    },
 
+})
 export const { addHabit } = habitSlice.actions;
-
-// ✅ THIS IS CRITICAL
 export default habitSlice.reducer;
