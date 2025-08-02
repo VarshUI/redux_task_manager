@@ -22,6 +22,11 @@ interface AddHabitPayload {
   frequency: "daily" | "weekly";
 }
 
+interface CompleteHabitPayload {
+  id: string;
+  date: string;
+}
+
 const habitSlice = createSlice({
   name: "habits",
   initialState,
@@ -36,8 +41,20 @@ const habitSlice = createSlice({
       };
       state.habits.push(newHabit);
     },
+
+    completeHabit: (state, action: PayloadAction<CompleteHabitPayload>) => {
+      const { id, date } = action.payload;
+      const habit = state.habits.find(h => h.id === id);
+      if (habit && !habit.completedDates.includes(date)) {
+        habit.completedDates.push(date);
+      }
+    },
+
+    removeHabit: (state, action: PayloadAction<string>) => {
+      state.habits = state.habits.filter(habit => habit.id !== action.payload);
+    },
   },
 });
 
-export const { addHabit } = habitSlice.actions;
+export const { addHabit, completeHabit, removeHabit } = habitSlice.actions;
 export default habitSlice.reducer;
